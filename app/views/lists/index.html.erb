@@ -1,0 +1,24 @@
+<h1>Lists</h1>
+
+<div class="all-user-lists">
+<% @lists.each do |list| %>
+<div class="user-list clearfix">
+	<div class="user-list-name" id="list-name-<%= list.id %>">
+    	<%= link_to list.list_name, list %>
+	</div>
+	<div class="edit-list-form clearfix" id="list-form-<%= list.id %>">
+		<%= render :partial => 'form', :locals => { :list_item => list } %>
+	</div>
+	<div class="user-list-options">
+		<a href="javascript:void(0);" class="edit-list-button" id="edit-list-<%= list.id %>">Edit</a>
+    	<%= link_to 'Destroy', list, :confirm => 'Are you sure?', :method => :delete %>
+	</div>
+</div>
+<% end %>
+</div>
+
+<a href="javascript:void(0);" class="new-list-button">New List</a>
+
+<div class="new-list-form">
+	<%= render 'form' %>
+</div>

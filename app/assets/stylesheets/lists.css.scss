@@ -1,0 +1,11 @@
+// Place all the styles related to the Lists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new-list-form { display: none; }
+.edit-list-form { display: none; }
+
+.user-list { width: 500px; height: 50px; }
+.user-list-name, edit-list-form { float: left; }
+.user-list-options { float: right; }
+.edit-list-form, .edit_list, .edit_list .field, .edit_list .actions { float: left; }

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  list: 
+  grocery_name: MyString
+  increment: 1.5
+  unit: MyString
+  upc_code: 1
+  current_amount: 1.5
+  use_per_day: 1.5
+
+two:
+  list: 
+  grocery_name: MyString
+  increment: 1.5
+  unit: MyString
+  upc_code: 1
+  current_amount: 1.5
+  use_per_day: 1.5

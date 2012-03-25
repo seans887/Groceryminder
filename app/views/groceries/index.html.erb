@@ -1,0 +1,35 @@
+<h1>Listing groceries</h1>
+
+<table>
+  <tr>
+    <th>List</th>
+    <th>Grocery name</th>
+    <th>Increment</th>
+    <th>Unit</th>
+    <th>Upc code</th>
+    <th>Current amount</th>
+    <th>Use per day</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @groceries.each do |grocery| %>
+  <tr>
+    <td><%= grocery.list %></td>
+    <td><%= grocery.grocery_name %></td>
+    <td><%= grocery.increment %></td>
+    <td><%= grocery.unit %></td>
+    <td><%= grocery.upc_code %></td>
+    <td><%= grocery.current_amount %></td>
+    <td><%= grocery.use_per_day %></td>
+    <td><%= link_to 'Show', grocery %></td>
+    <td><%= link_to 'Edit', edit_grocery_path(grocery) %></td>
+    <td><%= link_to 'Destroy', grocery, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Grocery', new_grocery_path %>
