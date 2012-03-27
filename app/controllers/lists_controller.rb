@@ -18,27 +18,11 @@ class ListsController < ApplicationController
   # GET /lists/1.json
   def show
     @list = List.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @list }
     end
-  end
-
-  # GET /lists/new
-  # GET /lists/new.json
-  # def new
-  #     @list = List.new
-  # 
-  #     respond_to do |format|
-  #       format.html # new.html.erb
-  #       format.json { render :json => @list }
-  #     end
-  #   end
-
-  # GET /lists/1/edit
-  def edit
-    @list = List.find(params[:id])
   end
 
   # POST /lists
@@ -86,4 +70,21 @@ class ListsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # GET /lists/new
+  # GET /lists/new.json
+  # def new
+  #     @list = List.new
+  # 
+  #     respond_to do |format|
+  #       format.html # new.html.erb
+  #       format.json { render :json => @list }
+  #     end
+  #   end
+
+  # GET /lists/1/edit
+  # def edit
+  #     @list = List.find(params[:id])
+  #   end
+  
 end

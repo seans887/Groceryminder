@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :list %><br />
-    <%= f.text_field :list %>
-  </div>
-  <div class="field">
     <%= f.label :grocery_name %><br />
     <%= f.text_field :grocery_name %>
   </div>
@@ -36,8 +32,12 @@
     <%= f.text_field :current_amount %>
   </div>
   <div class="field">
-    <%= f.label :use_per_day %><br />
-    <%= f.text_field :use_per_day %>
+    <%= f.label :use_per_day_estimated %><br />
+    <%= f.text_field :use_per_day_estimated %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_of_time_estimated %><br />
+    <%= f.text_field :unit_of_time_estimated %>
   </div>
   <div class="actions">
     <%= f.submit %>

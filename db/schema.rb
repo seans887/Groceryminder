@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120324210937) do
+ActiveRecord::Schema.define(:version => 20120325201311) do
 
   create_table "groceries", :force => true do |t|
     t.integer  "list_id"
@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(:version => 20120324210937) do
     t.string   "unit"
     t.integer  "upc_code"
     t.float    "current_amount"
-    t.float    "use_per_day"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.float    "use_per_day_actual"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.float    "use_per_day_estimate"
+    t.integer  "unit_of_time_estimated"
   end
 
   add_index "groceries", ["list_id"], :name => "index_groceries_on_list_id"

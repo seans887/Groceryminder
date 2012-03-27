@@ -44,7 +44,8 @@ class GroceriesController < ApplicationController
   # POST /groceries.json
   def create
     @grocery = Grocery.new(params[:grocery])
-
+    @grocery.use_per_day_actual = params[:grocery][:use_per_day_estimate]
+    
     respond_to do |format|
       if @grocery.save
         format.html { redirect_to @grocery, :notice => 'Grocery was successfully created.' }

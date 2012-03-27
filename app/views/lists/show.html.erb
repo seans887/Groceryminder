@@ -1,15 +1,28 @@
-<p id="notice"><%= notice %></p>
+
+<div class="user-list clearfix">
+	<div class="user-list-name" id="list-name-<%= @list.id %>">
+  		<%= @list.list_name %>
+	</div>
+	<div class="edit-list-form clearfix" id="list-form-<%= @list.id %>">
+		<%= render 'form' %>
+	</div>
+	<div class="user-list-options">
+		<a href="javascript:void(0);" class="edit-list-button" id="edit-list-<%= @list.id %>">Edit</a>
+    	<%= link_to 'Destroy', @list, :confirm => 'Are you sure?', :method => :delete %>
+	</div>
+</div>
+
+<div class="groceries">
+<% @list.groceries.each do |grocery| %>
+	<div>
+		You use <%= grocery.unit_increment %> <%= grocery.unit %> of <%= grocery.grocery_name %> every <%= 1 / grocery.use_per_day_actual %> days | 
+		<%= link_to 'Show', grocery %> | 
+		<%= link_to 'Edit', edit_grocery_path(grocery) %> | 
+		<%= link_to 'Destroy', grocery, :confirm => 'Are you sure?', :method => :delete %>
+	</div>
+<% end %>
+</div>
 
 <p>
-  <b>User:</b>
-  <%= @list.user.first_name %>
+	<%= link_to 'Back', lists_path %>
 </p>
-
-<p>
-  <b>List name:</b>
-  <%= @list.list_name %>
-</p>
-
-
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
