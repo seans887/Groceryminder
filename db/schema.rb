@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20120325201311) do
     t.float    "use_per_day_actual"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
-    t.float    "use_per_day_estimate"
     t.integer  "unit_of_time_estimated"
+    t.float    "use_per_day_estimate"
   end
 
   add_index "groceries", ["list_id"], :name => "index_groceries_on_list_id"

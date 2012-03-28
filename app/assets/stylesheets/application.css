@@ -188,3 +188,43 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 @media all and (orientation: landscape) {
 	
 }
+
+
+/* Start of GroceryMinder CSS */
+
+	/* Element Selectors */
+body { background-color: #663399; }
+a { color: blue; }
+h1 { font-size: 30px; line-height: 30px; padding: 5px 0px; }
+h2 { font-size: 22px; line-height: 22px; padding: 5px 0px; }
+h3 { font-size: 18px; line-height: 18px; padding: 5px 0px; }
+h4 { font-size: 16px; line-height: 16px; padding: 5px 0px; }
+p { padding: 10px 0px; }
+
+	/* Common Elements */
+#container { width: 800px; margin:0px auto; background-color: #fff; }
+	#header { }
+		#user_nav { height:100px; color: #fff; background-color: green; padding: 10px; }
+	#content { padding: 10px; }
+
+#footer { background-color: orange; }
+	
+	
+
+/* Ryan Fait Sticky Footer */
+
+* {
+	margin: 0;
+}
+html, body {
+	height: 100%;
+}
+#container {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
+}
+#footer, #push {
+	height: 142px; /* .push must be the same height as .footer */
+}

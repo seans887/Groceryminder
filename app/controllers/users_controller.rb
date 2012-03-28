@@ -1,17 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :require_login, :except => :new
-  
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @users }
-    end
-  end
+  before_filter :require_login, :except => [:new, :create]
 
   # GET /users/1
   # GET /users/1.json
@@ -33,11 +22,6 @@ class UsersController < ApplicationController
       format.html # new.html.erb
       format.json { render :json => @user }
     end
-  end
-
-  # GET /users/1/edit
-  def edit
-    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -83,4 +67,21 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # GET /users
+  # GET /users.json
+  # def index
+  #     @users = User.all
+  # 
+  #     respond_to do |format|
+  #       format.html # index.html.erb
+  #       format.json { render :json => @users }
+  #     end
+  #   end
+  
+  # GET /users/1/edit
+  # def edit
+  #     @user = User.find(params[:id])
+  #   end
+  
 end

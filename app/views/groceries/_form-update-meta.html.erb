@@ -1,10 +1,18 @@
-<%= form_for(@grocery) do |f| %>
-  <% if @grocery.errors.any? %>
+<% 	
+if defined? grocery_item
+	grocery = grocery_item
+else
+	grocery = @grocery
+end	
+%>
+
+<%= form_for(grocery) do |f| %>
+  <% if grocery.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@grocery.errors.count, "error") %> prohibited this grocery from being saved:</h2>
+      <h2><%= pluralize(grocery.errors.count, "error") %> prohibited this grocery from being saved:</h2>
 
       <ul>
-      <% @grocery.errors.full_messages.each do |msg| %>
+      <% grocery.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -53,12 +61,6 @@
   	<div class="field">
     	<%= f.select :unit_of_time_estimated, [['Day(s)', 1], ['Week(s)', 7], ['Month(s)', 30]] %>
   	</div>
-	<br />
-	You are currently
-	<div class="field">
-    	<%= f.number_field :current_amount, :placeholder => "50%", :step => "10", :min => "0", :max => "100" %>
-  	</div>
-	% stocked.
   	<div class="actions">
     	<%= f.submit %>
   	</div>

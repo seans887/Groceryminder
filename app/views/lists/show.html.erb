@@ -15,7 +15,8 @@
 <div class="groceries">
 <% @list.groceries.each do |grocery| %>
 	<div>
-		You use <%= grocery.unit_increment %> <%= grocery.unit %> of <%= grocery.grocery_name %> every <%= 1 / grocery.use_per_day_actual %> days | 
+		You use <%= grocery.unit_increment %> <%= grocery.unit %> of <%= grocery.grocery_name %> every <%= 1 / grocery.use_per_day_actual %> <%= grocery.unit_of_time_estimated %> | 
+		<%= render :partial => 'groceries/form-update-amount', :locals => { :grocery_item => grocery } %>
 		<%= link_to 'Show', grocery %> | 
 		<%= link_to 'Edit', edit_grocery_path(grocery) %> | 
 		<%= link_to 'Destroy', grocery, :confirm => 'Are you sure?', :method => :delete %>
