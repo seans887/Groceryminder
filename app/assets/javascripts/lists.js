@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 // You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-function showNewListForm(buttonClass, formClass) {
+function showNewForm(buttonClass, formClass) {
 	var linkText = $('.' + buttonClass).html();
 	buttonClass = '.' + buttonClass;
 	formClass = '.' + formClass;
@@ -42,8 +42,14 @@ function showEditForm(buttonClass) {
 
 $(document).ready(function() {
 	
-	showNewListForm('new-list-button', 'new-list-form');
+	showNewForm('new-list-button', 'new-list-form');
+	showNewForm('new-grocery-button', 'new-grocery-form');
 	
 	showEditForm('edit-list-button');
 	
+	$("#create_grocery_form").live('ajax:success', function(evt, data, status, xhr){
+		// empty the form for new submission
+		$(this).find('input:text,textarea,number').val('');
+		$('.new-grocery-button').click();
+	});
 });

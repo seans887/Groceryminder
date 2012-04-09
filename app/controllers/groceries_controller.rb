@@ -1,60 +1,45 @@
 class GroceriesController < ApplicationController
   
+  respond_to :html, :js
+  
   before_filter :require_login
+  # before_filter :get_list_id, :only => [:create, :update]
   
   # GET /groceries
   # GET /groceries.json
   def index
     @groceries = Grocery.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @groceries }
-    end
+        
+    respond_with(@groceries)
   end
-
+  
   # GET /groceries/1
   # GET /groceries/1.json
   def show
     @grocery = Grocery.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @grocery }
-    end
-  end
-
-  # GET /groceries/new
-  # GET /groceries/new.json
-  def new
-    @grocery = Grocery.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @grocery }
-    end
-  end
-
-  # GET /groceries/1/edit
-  def edit
-    @grocery = Grocery.find(params[:id])
+    
+    respond_with(@grocery)
+    # respond_to do |format|
+    #   format.html # show.html.erb
+    #   format.json { render :json => @grocery }
+    # end
   end
 
   # POST /groceries
   # POST /groceries.json
   def create
-    @grocery = Grocery.new(params[:grocery])
-    @grocery.use_per_day_actual = params[:grocery][:use_per_day_estimate]
+    @list = List.find(params[:grocery][:list_id])
+    @grocery = Grocery.new(params[:grocery].slice(:grocery_name, :unit_increment, :unit, :current_amount, :unit_of_time_estimated))
+    @grocery.list_id = @list.id
+    # @grocery.use_per_day_estimate = calc_use_per_day(params[:grocery][:unit_increment], params[:grocery][:number_of_days], params[:grocery][:unit_of_time_estimated])
     
-    respond_to do |format|
-      if @grocery.save
-        format.html { redirect_to @grocery, :notice => 'Grocery was successfully created.' }
-        format.json { render :json => @grocery, :status => :created, :location => @grocery }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @grocery.errors, :status => :unprocessable_entity }
-      end
-    end
+    # if @grocery.save
+    #       flash[:notice] = 'Grocery was successfully created.'
+    #     else
+    #       flash[:notice] = 'Error creating grocery.'
+    #     end
+    @grocery.save
+    respond_with(@grocery)
   end
 
   # PUT /groceries/1
@@ -62,15 +47,18 @@ class GroceriesController < ApplicationController
   def update
     @grocery = Grocery.find(params[:id])
 
-    respond_to do |format|
+    # respond_to do |format|
       if @grocery.update_attributes(params[:grocery])
-        format.html { redirect_to @grocery, :notice => 'Grocery was successfully updated.' }
-        format.json { head :no_content }
+        flash[:notice] = 'Grocery was successfully updated.'
+        # format.html { redirect_to @grocery, :notice => 'Grocery was successfully updated.' }
+        # format.json { head :no_content }
       else
-        format.html { render :action => "edit" }
-        format.json { render :json => @grocery.errors, :status => :unprocessable_entity }
+        flash[:notice] = 'Error updating grocery.'
+        # format.html { render :action => "edit" }
+        # format.json { render :json => @grocery.errors, :status => :unprocessable_entity }
       end
-    end
+      respond_with(@grocery)
+    # end
   end
 
   # DELETE /groceries/1
@@ -78,10 +66,29 @@ class GroceriesController < ApplicationController
   def destroy
     @grocery = Grocery.find(params[:id])
     @grocery.destroy
-
-    respond_to do |format|
-      format.html { redirect_to groceries_url }
-      format.json { head :no_content }
-    end
+    
+    redirect_to groceries_url
+    # respond_to do |format|
+    #   format.html { redirect_to groceries_url }
+    #   format.json { head :no_content }
+    # end
   end
+  
+  protected    
+    def get_list_id
+      @list = current_user.lists.find(params[:id])
+    end
+    
+  protected    
+    def calc_use_per_day(total_amount, num_days, unit_of_time)
+      total_amount.to_i
+      num_days.to_i
+      unit_of_time.to_i
+      logger.debug(total_amount)
+      logger.debug(num_days)
+      logger.debug(unit_of_time)
+      total_time = num_days * unit_of_time
+      use_per_day = total_amount / total_time
+      use_per_day
+    end
 end

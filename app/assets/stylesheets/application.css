@@ -208,6 +208,9 @@ p { padding: 10px 0px; }
 	#content { padding: 10px; }
 
 #footer { background-color: orange; }
+
+.success { color: #33CC00; }
+.error { color: #990000; }
 	
 	
 

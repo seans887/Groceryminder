@@ -19,11 +19,12 @@ end
     </div>
   <% end %>
 
-	You are currently
 	<div class="field">
-    	<%= f.number_field :current_amount, :placeholder => "50%", :step => "10", :min => "0", :max => "100" %>
+		You are currently <%= f.number_field :current_amount, :placeholder => "50%", :step => "10", :min => "0", :max => "100" %>
   	</div>
-	% stocked on <%= grocery.grocery_name %>.
+	<div class="field">
+		 stocked on <%= grocery.grocery_name %>
+	</div>
   	<div class="actions">
     	<%= f.submit %>
   	</div>

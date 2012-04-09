@@ -1,4 +1,3 @@
-
 <div class="user-list clearfix">
 	<div class="user-list-name" id="list-name-<%= @list.id %>">
   		<%= @list.list_name %>
@@ -12,16 +11,19 @@
 	</div>
 </div>
 
-<div class="groceries">
-<% @list.groceries.each do |grocery| %>
-	<div>
-		You use <%= grocery.unit_increment %> <%= grocery.unit %> of <%= grocery.grocery_name %> every <%= 1 / grocery.use_per_day_actual %> <%= grocery.unit_of_time_estimated %> | 
-		<%= render :partial => 'groceries/form-update-amount', :locals => { :grocery_item => grocery } %>
-		<%= link_to 'Show', grocery %> | 
-		<%= link_to 'Edit', edit_grocery_path(grocery) %> | 
-		<%= link_to 'Destroy', grocery, :confirm => 'Are you sure?', :method => :delete %>
-	</div>
+<ul class="grocery-messages">
+</ul>
+
+<div class="grocery-items">
+<% @groceries.order('created_at DESC').each do |grocery| %>
+  <%= render :partial => 'groceries/grocery-inline', :locals => { :grocery_item => grocery } %>
 <% end %>
+</div>
+
+<a href="javascript:void(0);" class="new-grocery-button">New Grocery Item</a>
+
+<div class="new-grocery-form">
+	<%= render :partial => 'groceries/form', :locals => { :the_list_id => @list.id } %>
 </div>
 
 <p>

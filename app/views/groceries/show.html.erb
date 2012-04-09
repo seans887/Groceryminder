@@ -1,28 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>List:</b>
-  <%= @grocery.list %>
-</p>
-
-<p>
   <b>Grocery name:</b>
   <%= @grocery.grocery_name %>
 </p>
 
 <p>
   <b>Increment:</b>
-  <%= @grocery.increment %>
+  <%= @grocery.unit_increment %>
 </p>
 
 <p>
   <b>Unit:</b>
   <%= @grocery.unit %>
-</p>
-
-<p>
-  <b>Upc code:</b>
-  <%= @grocery.upc_code %>
 </p>
 
 <p>
@@ -32,9 +22,5 @@
 
 <p>
   <b>Use per day:</b>
-  <%= @grocery.use_per_day %>
+  <%= @grocery.use_per_day_estimate %>
 </p>
-
-
-<%= link_to 'Edit', edit_grocery_path(@grocery) %> |
-<%= link_to 'Back', groceries_path %>

@@ -19,6 +19,9 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     
+    @groceries = @list.groceries
+    @grocery = Grocery.new
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @list }

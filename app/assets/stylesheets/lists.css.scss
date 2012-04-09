@@ -4,8 +4,11 @@
 
 .new-list-form { display: none; }
 .edit-list-form { display: none; }
+.new-grocery-form { display: none; }
 
 .user-list { width: 500px; height: 50px; }
 .user-list-name, edit-list-form { float: left; }
 .user-list-options { float: right; }
 .edit-list-form, .edit_list, .edit_list .field, .edit_list .actions { float: left; }
+.field { float: left; }
+.actions { clear: both; }

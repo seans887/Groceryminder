@@ -16,13 +16,13 @@
 
 <% @groceries.each do |grocery| %>
   <tr>
-    <td><%= grocery.list %></td>
+    <td><%= grocery.list.list_name %></td>
     <td><%= grocery.grocery_name %></td>
-    <td><%= grocery.increment %></td>
+    <td><%= grocery.unit_increment %></td>
     <td><%= grocery.unit %></td>
     <td><%= grocery.upc_code %></td>
     <td><%= grocery.current_amount %></td>
-    <td><%= grocery.use_per_day %></td>
+    <td><%= grocery.use_per_day_estimate %></td>
     <td><%= link_to 'Show', grocery %></td>
     <td><%= link_to 'Edit', edit_grocery_path(grocery) %></td>
     <td><%= link_to 'Destroy', grocery, :confirm => 'Are you sure?', :method => :delete %></td>

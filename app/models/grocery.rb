@@ -6,4 +6,11 @@ class Grocery < ActiveRecord::Base
   
   attr_accessor :number_of_days
   
+  validates_presence_of :list_id
+  validates_presence_of :grocery_name
+  validates_presence_of :unit_increment
+  validates_presence_of :unit
+  # validates_presence_of :number_of_days
+  validates_presence_of :unit_of_time_estimated
+  
 end
