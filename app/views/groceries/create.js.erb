@@ -1,0 +1,18 @@
+// Create a list of errors
+var messageContainer = $('.grocery-messages');
+messageContainer.html('');
+
+<% if @grocery.errors.any? %>
+
+  	<% @grocery.errors.full_messages.each do |error| %>
+  		messageContainer.append('<li class="error"><%= escape_javascript(error) %></li>');
+  	<% end %>
+
+<% else %>
+	
+	messageContainer.append('<li class="success">Grocery successfully created</li>');
+  	// Add the new comment to the beginning of the #comment-container division
+  	// $(".grocery-items").append('<%= j(render(:partial => "grocery-inline", :object => @grocery))%>').fadeIn(1000);
+	$('<%= j(render(:partial => "grocery-inline", :object => @grocery))%>').hide().prependTo('.grocery-items').fadeIn('3000');
+
+<% end %>
